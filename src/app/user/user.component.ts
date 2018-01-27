@@ -13,5 +13,10 @@ export class UserComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  alert(name) {
+    alert("Hello " + name)
+  }
+  hello() {
+    alert("Hello " + this.name)
+  }
 }
