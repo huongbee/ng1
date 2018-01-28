@@ -29,5 +29,12 @@
   </div>
 </div>
 <div class="row">
-
+  <ul>
+    <li *ngFor="let hero of heroes" [class]="hero.id>2 ? 'red' : 'blue'">{{hero.name}}</li>
+  </ul>
+</div>
+<div class="row">
+  <ul>
+    <li *ngFor="let hero of heroes" [class.red]="hero.id>2" [class.blue]="hero.id<=2">{{hero.name}}</li>
+  </ul>
 </div>
