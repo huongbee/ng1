@@ -6,6 +6,9 @@
         <li>Name: {{hero.name | uppercase}}</li>
         <li>ID: {{hero.id}}</li>
     </ul>
+    <ol type="a">
+        <li *ngFor="let hero of HEROES">{{hero.id}} - {{hero.name}}</li>
+    </ol>
 </div>
 Edit
 <div>
