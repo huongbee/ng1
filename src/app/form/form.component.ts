@@ -25,4 +25,6 @@ export class FormComponent implements OnInit {
     this.inputValue = event.target.value
   }
 
+  checkngIf = "huong"
+
 }

@@ -38,3 +38,7 @@
     <li *ngFor="let hero of heroes" [class.red]="hero.id>2" [class.blue]="hero.id<=2">{{hero.name}}</li>
   </ul>
 </div>
+<div class="row">
+  <div *ngIf="checkngIf=='huong'; else elseBlock">{{checkngIf}}</div>
+  <ng-template #elseBlock> change value of checkngIf to show this text</ng-template>
+</div>
