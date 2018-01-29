@@ -42,3 +42,16 @@
   <div *ngIf="checkngIf=='huong'; else elseBlock">{{checkngIf}}</div>
   <ng-template #elseBlock> change value of checkngIf to show this text</ng-template>
 </div>
+<div class="row">
+  <div *ngIf="checkngIf=='huong'; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>thenBlock show when ngIf is true</ng-template>
+  <ng-template #elseBlock>elseBlock</ng-template>
+</div>
+<hr>
+<div class="row">
+  <ul>
+    <li *ngFor="let hero of heroes">
+      <span [ngStyle]="{color: hero.id>2 ? 'red' : 'blue'}">{{hero.name}}</span>
+    </li>
+  </ul>
+</div>
