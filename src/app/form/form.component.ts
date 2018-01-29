@@ -25,6 +25,21 @@ export class FormComponent implements OnInit {
     this.inputValue = event.target.value
   }
 
-  checkngIf = "huong"
+  checkngIf = "huong";
+
+  textEdit = '';
+  idEdit = null;
+  showEdit(event) {
+    this.textEdit = event.target.innerText
+    this.idEdit = event.target.getAttribute('id')
+  }
+  saveData(name) {
+    this.heroes.forEach((hero) => {
+      if (hero.id == this.idEdit) {
+        hero.name = name
+      }
+    })
+
+  }
 
 }

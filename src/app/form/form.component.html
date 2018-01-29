@@ -39,8 +39,8 @@
   </ul>
 </div>
 <div class="row">
-  <div *ngIf="checkngIf=='huong'; else elseBlock">{{checkngIf}}</div>
-  <ng-template #elseBlock> change value of checkngIf to show this text</ng-template>
+  <div *ngIf="checkngIf=='huong'; else elseBlocka">{{checkngIf}}</div>
+  <ng-template #elseBlocka> change value of checkngIf to show this text</ng-template>
 </div>
 <div class="row">
   <div *ngIf="checkngIf=='huong'; then thenBlock else elseBlock"></div>
@@ -49,9 +49,20 @@
 </div>
 <hr>
 <div class="row">
-  <ul>
-    <li *ngFor="let hero of heroes">
-      <span [ngStyle]="{color: hero.id>2 ? 'red' : 'blue'}">{{hero.name}}</span>
-    </li>
-  </ul>
+  <div class="col-sm-3">
+    <ul>
+      <li *ngFor="let hero of heroes">
+        <span [ngStyle]="{color: hero.id>2 ? 'red' : 'blue'}" id="{{hero.id}}" (click)="showEdit($event)">{{hero.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="textEdit===''; else elseShow"></div>
+  <div class="col-sm-3">
+    <ng-template #elseShow>
+      <p>Edit</p>
+      <br>
+      <input type="text" value="{{textEdit}}" #newName />
+      <button class="btn btn-primary" (click)="saveData(newName.value)">Save</button>
+    </ng-template>
+  </div>
 </div>
