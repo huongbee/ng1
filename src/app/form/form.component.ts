@@ -29,17 +29,42 @@ export class FormComponent implements OnInit {
 
   textEdit = '';
   idEdit = null;
+  isShowForm = false;
+  action = "edit"
   showEdit(event) {
+    this.action = 'edit'
     this.textEdit = event.target.innerText
     this.idEdit = event.target.getAttribute('id')
+    this.isShowForm = !this.isShowForm;
   }
-  saveData(name) {
-    this.heroes.forEach((hero) => {
-      if (hero.id == this.idEdit) {
-        hero.name = name
-      }
-    })
-
+  saveData() {
+    if (this.action == 'add') {
+      this.heroes.unshift({
+        id: this.idEdit,
+        name: this.textEdit
+      })
+    }
+    else {
+      this.heroes.forEach((hero) => {
+        if (hero.id == this.idEdit) {
+          hero.name = this.textEdit
+        }
+      })
+    }
+    this.isShowForm = !this.isShowForm;
+  }
+  deleteHero(id) {
+    let position = this.heroes.map(hero => hero.id).indexOf(id);
+    if (position != -1) {
+      this.heroes.splice(position, 1);
+    }
+    else alert('Cannot find hero!')
+  }
+  addHero() {
+    this.isShowForm = !this.isShowForm;
+    this.textEdit = '';
+    this.idEdit = '';
+    this.action = 'add'
   }
 
 }

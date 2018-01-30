@@ -50,19 +50,27 @@
 <hr>
 <div class="row">
   <div class="col-sm-3">
-    <ul>
-      <li *ngFor="let hero of heroes">
-        <span [ngStyle]="{color: hero.id>2 ? 'red' : 'blue'}" id="{{hero.id}}" (click)="showEdit($event)">{{hero.name}}</span>
-      </li>
-    </ul>
+
+    <h2>List Heroes</h2>
+    <button class="btn btn-success" (click)="addHero()" *ngIf="!isShowForm">Add hero</button>
+    <button class="btn btn-success" *ngIf="isShowForm" disabled>Add hero</button>
+    <br>
+    <br>
+    <table class="table table-bordered">
+      <tr *ngFor="let hero of heroes">
+        <td>
+          <span [ngStyle]="{color: hero.id>2 ? 'red' : 'blue'}" id="{{hero.id}}" (click)="showEdit($event)">{{hero.name}}</span>
+        </td>
+        <td>
+          <button (click)="deleteHero(hero.id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+    <div *ngIf="heroes.length==0">Heroes empty!</div>
   </div>
-  <div *ngIf="textEdit===''; else elseShow"></div>
-  <div class="col-sm-3">
-    <ng-template #elseShow>
-      <p>Edit</p>
-      <br>
-      <input type="text" value="{{textEdit}}" #newName />
-      <button class="btn btn-primary" (click)="saveData(newName.value)">Save</button>
-    </ng-template>
+  <div class="col-sm-3" *ngIf="isShowForm">
+    <input placeholder="Id" type="text" *ngIf="action=='add'" [(ngModel)]="idEdit" />
+    <input placeholder="Name" type="text" value="{{textEdit}}" [(ngModel)]="textEdit" />
+    <button class="btn btn-primary" (click)="saveData()">Save</button>
   </div>
 </div>
