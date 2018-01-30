@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { UserComponent } from './user/user.component';
 import { FormComponent } from './form/form.component';
+import { PersonComponent } from './person/person.component';
+import { ListPersonComponent } from './list-person/list-person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     UserComponent,
-    FormComponent
+    FormComponent,
+    PersonComponent,
+    ListPersonComponent
   ],
   imports: [
     BrowserModule,
